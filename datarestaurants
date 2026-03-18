@@ -1,0 +1,103 @@
+import { rosette_wines } from "./wines-rosette";
+import { comptoir_wines } from "./wines-comptoir";
+import { mermoz_wines } from "./wines-mermoz";
+import { clarence_wines } from "./wines-clarence";
+import { ressources_wines } from "./wines-ressources";
+import { bacav_wines } from "./wines-bacav";
+import { eels_wines } from "./wines-eels";
+import { petit_sommelier_wines } from "./wines-petit-sommelier";
+import { maceo_wines } from "./wines-maceo";
+import { saint_sebastien_wines } from "./wines-saint-sebastien";
+import { litres228_wines } from "./wines-228litres";
+import { taillevent_wines } from "./wines-taillevent";
+import { bulgari_wines } from "./wines-bulgari";
+import { gabriel_wines } from "./wines-gabriel";
+import { quinzevins_wines } from "./wines-quinzevins";
+import { taillevent110_wines } from "./wines-110taillevent";
+import { galet_wines } from "./wines-galet";
+import { armilin_wines } from "./wines-armilin";
+import { laperle_wines } from "./wines-laperle";
+import { aboireetamanger_wines } from "./wines-aboireetamanger";
+import { pierresang_wines } from "./wines-pierresang";
+import { alexbienheureux_wines } from "./wines-alex-bienheureux";
+import { ambassade_wines } from "./wines-ambassade-auvergne";
+import { petard_wines } from "./wines-petard";
+import { kayser_wines } from "./wines-kayser";
+import { aufildu_zinc_wines } from "./wines-aufilduzinc";
+import { bistrodesanges_wines } from "./wines-bistro-des-anges";
+import { bonhomme_wines } from "./wines-bonhomme";
+import { bistrotplacesaumur_wines } from "./wines-bistrot-place-saumur";
+import { braise_wines } from "./wines-braise";
+import { bistrotcomedie_wines } from "./wines-bistrot-comedie";
+import { chantecler_wines } from "./wines-chantecler";
+import { vintagereims_wines } from "./wines-vintage-reims";
+import { boucbleu_wines } from "./wines-bouc-bleu";
+import { liondor_wines } from "./wines-lion-dor";
+import { bubblebliss_wines } from "./wines-bubblebliss";
+import { decale_wines } from "./wines-decale";
+import { cornichon_wines } from "./wines-cornichon";
+import { chezserge_wines } from "./wines-chezserge";
+import { brasserieTheatre_wines } from "./wines-brasserie-theatre";
+import { luna_wines } from "./wines-luna";
+import { jaja_wines } from "./wines-jaja";
+import { jaayl_wines } from "./wines-jaayl";
+import { inoberkampf_wines } from "./wines-in-oberkampf";
+import { frida_wines } from "./wines-frida";
+import { frenchie_wines } from "./wines-frenchie";
+import { freia_wines } from "./wines-freia";
+import { drwine_wines } from "./wines-drwine";
+import { asphodele_wines } from "./wines-asphodele";
+import { caveau_wines } from "./wines-caveau-arches";
+import { octave_wines } from "./wines-octave";
+import { observatoire_wines } from "./wines-observatoire";
+import { hydropathe_wines } from "./wines-hydropathe";
+
+export type Wine = {
+  id: string;
+  name: string;
+  year: number | string;
+  type: "Rouge" | "Blanc" | "Rosé" | "Champagne" | "Pétillant" | "Orange" | "Sucré";
+  region: string;
+  appellation: string;
+  price: number;
+  producer?: string;
+  description?: string;
+};
+
+export type Restaurant = {
+  id: string;
+  slug: string;
+  name: string;
+  city: string;
+  cuisine: string;
+  rating: number;
+  image: string;
+  wineCount: number;
+  wines: Wine[];
+  pdfUrls?: string[];
+  address?: string;
+  phone?: string;
+  website?: string;
+  hours?: string;
+  reservationUrl?: string;
+};
+
+// garde ici tout ton tableau restaurants tel quel
+
+export const wineTypes = [
+  "Rouge",
+  "Blanc",
+  "Rosé",
+  "Champagne",
+  "Pétillant",
+  "Orange",
+  "Sucré",
+] as const;
+
+export const regions = [...new Set(restaurants.flatMap((r) => r.wines.map((w) => w.region)))].sort(
+  (a, b) => a.localeCompare(b, "fr"),
+);
+
+export const cities = [...new Set(restaurants.map((r) => r.city))].sort((a, b) =>
+  a.localeCompare(b, "fr"),
+);
